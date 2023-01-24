@@ -5,12 +5,11 @@ pipeline {
     }
     environment {
         PAT_TOKEN = credentials('personal_access_token')
-        PAT_TOKEN = mask(PAT_TOKEN)
     }
     stages {
         stage('Build') {
             steps {
-                sh 'export PAT_TOKEN=${env.PAT_TOKEN} && python script.py --username ${params.username}'
+                sh 'export PAT_TOKEN=${env.PAT_TOKEN} && python ghe_org.py --username ${params.username}'
             }
         }
     }
