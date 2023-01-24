@@ -5,11 +5,12 @@ pipeline {
     }
     environment {
         PAT_TOKEN = credentials('personal_access_token')
+        PAT_TOKEN = mask(PAT_TOKEN)
     }
     stages {
         stage('Clone') {
             steps {
-                git url: 'https://github.com/myorg/myrepo.git'
+                git url: 'https://github.com/100daysofdevops/testingjenkins.git'
             }
         }
         stage('Build') {
