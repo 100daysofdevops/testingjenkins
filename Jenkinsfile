@@ -8,11 +8,6 @@ pipeline {
         PAT_TOKEN = mask(PAT_TOKEN)
     }
     stages {
-        stage('Clone') {
-            steps {
-                git url: 'https://github.com/100daysofdevops/testingjenkins.git'
-            }
-        }
         stage('Build') {
             steps {
                 sh 'export PAT_TOKEN=${env.PAT_TOKEN} && python script.py --username ${params.username}'
